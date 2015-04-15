@@ -1,10 +1,8 @@
-# Cloud Data Object
-Testing Open source the JSDO
 
 Cloud Data Object Specificatioin
 ===========
 
-The Cloud Data Object (CDO) defines a client-side single data management strategy when working in an n-tier application architecture.
+The Cloud Data Object (CDO) Specification defines a client-side single data management strategy when working in an n-tier application architecture.
 
 The CDO is a multi-purpose definition that supports data management between any client and any server. The CDO specification supports a complex data model and API to manipulate data while maintaining data integrity with the server. Data synchronization of related records is a fundamental requirement of business applications and is fully supported in the CDO. Data transaction and business logic support is realized through invoke and submit operations. Submit sends multiple data changes to the server and manages record-level errors returned from the server. Invoke is used to pass data and recieve data from critical business logic on the server. 
 
