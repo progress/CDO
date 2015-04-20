@@ -7,15 +7,10 @@ The Cloud Data Object (CDO) is a protocol definition and API to manage complex b
 The original implementation of CDO by Progress® was for a JavaScript client running on a browser against a Progress OpenEdge® server. This is know as the JSDO - JavaScript Data Object. Other implementations include a client in a mobile Hybrid App (a variation of the browser client), a Telerik® NativeScript client, a Node.js server, and a Java server. The JSDO has successfully been used with servers other than OpenEdge such as Node.js to export data created / aggregated in Modulus™ to a Progress® Rollbase Application.
 
 * Getting Started:  [Getting Started](#gettingstarted)
-*
 * Documentation:    [CDO Catalog Definition](http://progress.github.io/docs/cdo/Overview/catalog.html)
-
                     [CDO API](http://progress.github.io/docs/cdo/api.html)
-                    
 * Website and blog: [progress.com](http://progress.github.io/cdo/index.html)
-
                     [Blog](http://progress.github.io/cdo/blog.html)
-
 * CDO MIT License:  [License](#license)
 
 
@@ -24,7 +19,6 @@ Getting More Information
 ========================
 
 * [contact us](https://www.progress.com/)
-
 
 
 
