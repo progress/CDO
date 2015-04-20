@@ -2,17 +2,17 @@
 Cloud Data Object (CDO)
 ===========
 
-Cloud Data Object (CDO) is a protocol definition and and client-side data management API to manage complex business transactions when working in an n-tier application architecture. The protocol involves a client and a server and it is language agnostic.
-
-The CDO protocol and API are cross-platform friendly and can be layered on existing standards-based technologies. The CDO  functionality extends business application client communication past simple CRUD (create, read, update, delete) with transactional data synchronization and business logic invocation, something that many protocols claim but do little to help actually manage synchronization across device boundaries. This makes CDO a compelling protocol for integrating new clients and services into existing business solutions.
+The Cloud Data Object (CDO) is a protocol definition and API to manage complex business transactions when working in an n-tier application architecture. The protocol involves a client and a server and it is language agnostic. The CDO protocol and API are cross-platform friendly and can be layered on existing standards-based technologies. The CDO  extends business application client functionality past simple CRUD (create, read, update, delete) operations with support for transactional data synchronization and business logic invocation, something that many protocols claim but do little to help actually manage synchronization across device boundaries. This makes CDO a compelling protocol/API for integrating new clients into existing business solutions.
 
 The original implementation of CDO by Progress® was for a JavaScript client running on a browser against a Progress OpenEdge® server. This is know as the JSDO - JavaScript Data Object. Other implementations include a client in a mobile Hybrid App (a variation of the browser client), a Telerik® NativeScript client, a Node.js server, and a Java server. The JSDO has successfully been used with servers other than OpenEdge such as Node.js to export data created / aggregated in Modulus™ to a Progress® Rollbase Application.
 
-* Getting Started: [Getting Started](#gettingstarted)
-* Documentation: ([CDO Catalog Definition](http://progress.github.io/docs/cdo/Overview/catalog.html)) ([CDO API](http://progress.github.io/docs/cdo/api.html))
-* Website and blog: ([progress.com](http://progress.github.io/cdo/index.html))  ([Blog](http://progress.github.io/cdo/blog.html))
-* CDO BSD License: [License](#license)
-* 
+* Getting Started:  [Getting Started](#gettingstarted)
+* Documentation:    [CDO Catalog Definition](http://progress.github.io/docs/cdo/Overview/catalog.html) 
+                    [CDO API](http://progress.github.io/docs/cdo/api.html)
+* Website and blog: [progress.com](http://progress.github.io/cdo/index.html)  
+                    [Blog](http://progress.github.io/cdo/blog.html)
+* CDO MIT License:  [License](#license)
+
 
 
 Getting More Information
