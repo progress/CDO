@@ -7,20 +7,9 @@ The Data Object and Data Catalog specifications are cross-platform and can be la
 
 The reference implementation of CDO specification is a JavaScript client running in a web browser against a Progress OpenEdge® server. This was developed and is known as the by Progress® JSDO - JavaScript Data Object. The JSDO uses REST for communications between the client and a Progress OpenEdge data service. Other reference implementations include a client in a mobile Hybrid App (a variation of the browser client), a Telerik® NativeScript client, a Node.js server (acting as a client), and a Java server (again acting as a client). The JSDO has successfully been used with servers other than OpenEdge such as a Progress® Rollbase Application and to a Node.js server to export data created/aggregated in Modulus™.
 
-* Getting Started:  [Getting Started](#gettingstarted)
-* Documentation:    [Data Catalog Definition](http://progress.github.io/docs/cdo/Overview/catalog.html)
-* <br/>
-                    [Data Object API](http://progress.github.io/docs/cdo/api.html)
 * Website and blog: [progress.com](http://progress.github.io/cdo/index.html)
                     [Blog](http://progress.github.io/cdo/blog.html)
 * Apache License:   [License](#license)
-
-
-
-Getting More Information
-========================
-
-* [Contact us](https://www.progress.com/)
 
 
 
