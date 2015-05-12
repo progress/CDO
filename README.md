@@ -10,6 +10,7 @@ The original implementation of CDO specification by Progress® was for a JavaScr
 
 * Getting Started:  [Getting Started](#gettingstarted)
 * Documentation:    [Data Catalog Definition](http://progress.github.io/docs/cdo/Overview/catalog.html)
+* <br/>
                     [Data Object API](http://progress.github.io/docs/cdo/api.html)
 * Website and blog: [progress.com](http://progress.github.io/cdo/index.html)
                     [Blog](http://progress.github.io/cdo/blog.html)
@@ -20,14 +21,15 @@ The original implementation of CDO specification by Progress® was for a JavaScr
 Getting More Information
 ========================
 
-* [contact us](https://www.progress.com/)
+* [Contact us](https://www.progress.com/)
 
 
 
 Samples using the CDO in JavaScript
 -----------------------------
 
-The JavaScript Data Object (JSDO) is a sample implementation of the Cloud Data Object Specification V4.0
+The JavaScript Data Object (JSDO) is a sample implementation of the Cloud Data Object Specification V4.0.
+***Update 
 ResearchKit [`ORKCatalog`](samples/ORKCatalog) sample app is a
 good place to start. Find the project in ResearchKit's
 [`samples`](samples) directory. This project includes a list of all
