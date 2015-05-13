@@ -1,7 +1,7 @@
 Cloud Data Object (CDO)
 ===========
 
-The Cloud Data Object (CDO) is a specification to manage complex business transactions when working in an n-tier application architecture. The CDO specification includes a *Data Object* on the client, and a *Data Service Catalog* for a remote *Data Service*. The specification is language agnostic and is useful when the client and the server are implemented in different technologies. 
+The Cloud Data Object (CDO) defines a specification to manage complex business transactions when working in an n-tier application architecture. The CDO specification includes a *Data Object* on the client, and a *Data Service Catalog* for a remote *Data Service*. The specification is language agnostic and is useful when the client and the server are implemented in different technologies. 
 
 The Data Object and Data Catalog specifications are cross-platform and can be layered on existing standards-based technologies for the communication protocol. The Data Object extends business application client functionality past simple CRUD (create, read, update, delete) operations with support for transactional data synchronization and business logic invocation to help actually manage synchronization across device boundaries. This makes CDO a compelling specification for integrating new client apps into existing business solutions.
 
