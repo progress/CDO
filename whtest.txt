@@ -1,1 +1,1 @@
-Thsi line was added via browser to teh original server.
+This line was added via browser to the original server.
