@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-Added a line on second computer
-=======
-This line was added via browser to the original server.
->>>>>>> origin/master
