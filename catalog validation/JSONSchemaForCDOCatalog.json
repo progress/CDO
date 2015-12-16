@@ -1,0 +1,519 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for Cloud Data Object Catalog, v. 1.3",
+  "definitions": {
+    "jsdoRelation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parentName",
+        "childName",
+        "relationFields"
+      ],
+      "properties": {
+        "parentName": {
+          "type": "string"
+        },
+        "childName": {
+          "type": "string"
+        },
+        "relationFields": {
+          "type": "array",
+          "description": "you can delete key 'minItems' if JSDO allows to create empty relationFields array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "parentFieldName",
+              "childFieldName"
+            ],
+            "properties": {
+              "parentFieldName": {
+                "type": "string"
+              },
+              "childFieldName": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "relationName": {
+          "type": "string"
+        }
+      }
+    },
+    "jsdoOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "verb"
+      ],
+      "properties": {
+        "capabilities": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "useBeforeImage": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "read",
+            "update",
+            "invoke",
+            "submit",
+            "create",
+            "delete",
+            "Read",
+            "Update",
+            "Invoke",
+            "Submit",
+            "Create",
+            "Delete"
+          ]
+        },
+        "verb": {
+          "type": "string",
+          "enum": [
+            "get",
+            "put",
+            "post",
+            "delete"
+          ]
+        },
+        "mergeMode": {
+          "type": "string",
+          "enum": [
+            "EMPTY",
+            "APPEND",
+            "MERGE",
+            "REPLACE"
+          ]
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "type"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "PATH",
+                  "QUERY",
+                  "REQUEST_BODY",
+                  "MATRIX",
+                  "FORM",
+                  "COOKIE",
+                  "HEADER",
+                  "RESPONSE_BODY",
+                  "REQUEST_BODY,RESPONSE_BODY"
+                ]
+              },
+	      "xType": {
+		"type": "string",
+		"enum": [
+		  "ARRAY",
+		  "DATASET",
+          "TABLE",
+          "integer",
+          "string",
+          "number",
+          "boolean",
+          "DECIMAL",
+          "INTEGER",
+          "STRING",
+          "LOGICAL",
+          "CHARACTER",
+          "DATE",
+          "DATETIME",
+          "DATETIME-TZ",
+          "CLOB",
+          "INT64"
+		]
+	      }
+            }
+          }
+        }
+      }
+    },
+    "jsdoDateFormat": {
+      "type": "string",
+      "pattern": "^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec) (\\d\\d) (\\d\\d:\\d\\d:\\d\\d) \\S* \\d\\d\\d\\d$"
+    },
+    "Field": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(_id|[A-Za-z_]+[A-Za-z_$0-9\\-&#%]*)$": {
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "required": {
+              "type": "boolean"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "string",
+                "integer",
+                "number",
+                "boolean",
+                "array"
+              ]
+            },
+            "ablType": {
+              "type": "string",
+              "enum": [
+                "DECIMAL",
+                "INTEGER",
+                "STRING",
+                "LOGICAL",
+                "CHARACTER",
+                "DATE",
+                "DATETIME",
+                "DATETIME-TZ",
+                "CLOB",
+                "INT64"
+              ]
+            },
+            "default": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": {
+              "type": "string"
+            },
+            "format": {
+              "type": "string"
+            },
+            "items": {
+              "type": "object"
+            },
+            "maxItems": {
+              "type": "integer"
+            },
+            "contentEncoding": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Table": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "array"
+          ]
+        },
+        "foreignKeys": {
+          "$ref": "#/definitions/ForeignKeys"
+        },
+        "primaryKey": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "indexes": {
+          "$ref": "#/definitions/Indexes"
+        },
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "additionalProperties": {
+              "type": "boolean"
+            },
+            "properties": {
+              "$ref": "#/definitions/Field",
+              "minProperties": 3,
+              "required": [
+                "_id"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "NestedTable": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "object"
+          ]
+        },
+        "additionalProperties": {
+          "type": "boolean"
+        },
+        "properties": {
+          "minProperties": 3,
+          "required": [
+            "_id"
+          ],
+          "$ref": "#/definitions/Field"
+        }
+      }
+    },
+    "DataSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "object"
+          ]
+        },
+        "additionalProperties": {
+          "type": "boolean"
+        },
+        "properties": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[A-Za-z_]+[A-Za-z_$0-9\\-&#%]*$": {
+              "required": [
+                "type"
+              ],
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Table"
+                },
+                {
+                  "$ref": "#/definitions/NestedTable"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ForeignKeys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "fields",
+          "parent"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "parent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Indexes": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[A-Za-z_]+[A-Za-z_$0-9\\-&#%]*$": {
+          "type": "object",
+          "required": [
+            "fields"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "primary": {
+              "type": "boolean"
+            },
+            "wordIndex": {
+              "type": "boolean"
+            },
+            "unique": {
+              "type": "boolean"
+            },
+            "fields": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z]+[A-Za-z_$0-9 ]*$"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": [
+        "1.0",
+        "1.1",
+        "1.2",
+        "1.3"
+      ]
+    },
+    "lastModified": {
+      "$ref": "#/definitions/jsdoDateFormat"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "address",
+          "resources"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "client" : {"type" : "string"},
+          "useRequest": {
+            "type": "boolean"
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "path",
+                "schema"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "idProperty": {
+                  "type": "string"
+                },                
+                "autoSave": {
+                  "type": "boolean"
+                },
+                "dataDefinitions": {
+		  "type": "object"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "object"
+                      ]
+                    },
+                    "additionalProperties": {
+                      "type": "boolean"
+                    },
+                    "properties": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "patternProperties": {
+                        "^[A-Za-z_]+[A-Za-z_$0-9\\-&#%]*$": {
+                          "oneOf": [
+                            {
+                              "$ref": "#/definitions/DataSet"
+                            },
+                            {
+                              "$ref": "#/definitions/Table"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "additionalProperties",
+                    "properties"
+                  ]
+                },
+                "relations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/jsdoRelation"
+                  }
+                },
+                "operations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/jsdoOperation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "version",
+    "lastModified",
+    "services"
+  ]
+}
