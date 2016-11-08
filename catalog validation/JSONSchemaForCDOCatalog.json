@@ -55,6 +55,9 @@
         "capabilities": {
           "type": "string"
         },
+        "mappingType": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -193,8 +196,51 @@
                 "DATETIME",
                 "DATETIME-TZ",
                 "CLOB",
-                "INT64"
+                "INT64",
+                "BLOB"
               ]
+            },
+            "semanticType": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/SemanticTypes"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "type": {
+                      "$ref": "#/definitions/SemanticTypes"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "Currency",
+                        "Integer",
+                        "Number",
+                        "Percent",
+                        "PercentValue"
+                      ]
+                    },
+                    "min": {
+                      "type": "string"
+                    },
+                    "max": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type", "min", "max"
+                  ]
+                }
+              ] 
             },
             "default": {
               "oneOf": [
@@ -392,6 +438,26 @@
           }
         }
       }
+    },
+    "SemanticTypes": {
+      "enum": [
+        "Boolean",
+        "Currency",
+        "Date",
+        "Datetime",
+        "Email",
+        "Integer",
+        "Internal",
+        "Number",
+        "Password",
+        "Percent",
+        "PhoneNumber",
+        "RichText",
+        "Text",
+        "URL",
+        "Image",
+        "File"
+      ]
     }
   },
   "type": "object",
@@ -402,7 +468,8 @@
         "1.0",
         "1.1",
         "1.2",
-        "1.3"
+        "1.3",
+        "1.4"
       ]
     },
     "lastModified": {
@@ -455,7 +522,7 @@
                   "type": "boolean"
                 },
                 "dataDefinitions": {
-		  "type": "object"
+		          "type": "object"
                 },
                 "schema": {
                   "type": "object",
