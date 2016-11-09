@@ -454,9 +454,7 @@
         "PhoneNumber",
         "RichText",
         "Text",
-        "URL",
-        "Image",
-        "File"
+        "URL"
       ]
     }
   },
